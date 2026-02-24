@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meine Anwendung</string>
+    <string name="button_text">Drücken Sie den Knopf</string>
+    <string name="textview_text">Hallo, Welt!</string>
+    <string name="edittext_text">Schreiben Sie hier etwas...</string>
+</resources>

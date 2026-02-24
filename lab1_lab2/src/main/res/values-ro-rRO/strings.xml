@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplicația Mea</string>
+    <string name="button_text">Apasă butonul</string>
+    <string name="textview_text">Salut, Lume!</string>
+    <string name="edittext_text">Scrie ceva aici...</string>
+</resources>
