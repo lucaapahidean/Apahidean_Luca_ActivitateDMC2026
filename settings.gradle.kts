@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Apahidean_Luca_ActivitateDMC2026"
 include(":lab1_lab2")
+include(":lab3")
