@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D1B2A"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐋"
+            android:textSize="48sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personalizează-ți Balena"
+            android:textColor="#00D4FF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Configurează proprietățile balenei tale"
+            android:textColor="#7FA8C9"
+            android:textSize="13sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="28dp" />
+
+        <!-- Card: Nume -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NUME"
+                android:textColor="#00D4FF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.15" />
+
+            <EditText
+                android:id="@+id/editTextNume3"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Moby Dick"
+                android:textColor="#E8F4FD"
+                android:textColorHint="#3D5A73"
+                android:textSize="18sp"
+                android:inputType="text"
+                android:background="@null"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1A3A52" />
+
+        </LinearLayout>
+
+        <!-- Card: Varsta -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VÂRSTĂ (ANI)"
+                android:textColor="#00D4FF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.15" />
+
+            <EditText
+                android:id="@+id/editTextVarsta3"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="ex: 25"
+                android:textColor="#E8F4FD"
+                android:textColorHint="#3D5A73"
+                android:textSize="18sp"
+                android:inputType="number"
+                android:background="@null"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1A3A52" />
+
+        </LinearLayout>
+
+        <!-- Card: Greutate -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GREUTATE (TONE)"
+                android:textColor="#00D4FF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.15" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="12dp">
+
+                <SeekBar
+                    android:id="@+id/seekBarGreutate3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="180"
+                    android:min="6"
+                    android:progressTint="#00D4FF"
+                    android:thumbTint="#00D4FF" />
+
+                <TextView
+                    android:id="@+id/textViewGreutate3"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:text="6 t"
+                    android:textColor="#E8F4FD"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:layout_marginStart="12dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="6"
+                    android:textColor="#3D5A73"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="180"
+                    android:textColor="#3D5A73"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Card: Este adult -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STATUT"
+                    android:textColor="#00D4FF"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.15" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Este o balenă adultă?"
+                    android:textColor="#E8F4FD"
+                    android:textSize="15sp"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+
+            <Switch
+                android:id="@+id/switchEsteAdult3"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:checked="false"
+                android:showText="false"
+                android:thumbTint="#00D4FF"
+                android:trackTint="#1A3A52" />
+
+            <TextView
+                android:id="@+id/textViewAdultStatus3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nu!"
+                android:textColor="#7FA8C9"
+                android:textSize="15sp"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- Card: Specie -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPECIE"
+                android:textColor="#00D4FF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.15"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/spinnerSpecie3"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:entries="@array/specii_balene"
+                android:backgroundTint="#00D4FF"
+                android:popupBackground="#112233" />
+
+        </LinearLayout>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/saveButton3"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="SALVEAZĂ BALENA"
+            android:textColor="#0D1B2A"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:letterSpacing="0.1"
+            android:backgroundTint="#00D4FF"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>

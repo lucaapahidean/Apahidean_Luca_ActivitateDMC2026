@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">lab4</string>
+    <string name="bun_venit">Personalizează-ți balena</string>
+    <string name="bun_venit_AI">Personalizează-ți balena (UI îmbunătățit) ✨</string>
+    <string name="personalizeaza">Prin următoarele view-uri îți poți personaliza balena!</string>
+    <string name="nume">Numele balenei</string>
+    <string name="nume_placeholder">Moby Dick</string>
+    <string name="varsta">Vârsta balenei (ani)</string>
+    <string name="greutate">Greutatea balenei (tone)</string>
+    <integer name="greutate_lim_inf">6</integer>
+    <integer name="greutate_lim_sup">180</integer>
+    <string name="este_adult">Este o balenă adultă?</string>
+    <string name="afirmativ">Da!</string>
+    <string name="negativ">Nu!</string>
+    <string name="specie">Specia balenei</string>
+    <string-array name="specii_balene">
+        <item>
+            Balenă Albastră
+        </item>
+        <item>
+            Balenă cu Cocoașă
+        </item>
+        <item>
+            Balenă Ucigașă
+        </item>
+        <item>
+            Balenă Albă
+        </item>
+        <item>
+            Balenă Gri
+        </item>
+    </string-array>
+    <string name="salveaza">Salvează!</string>
+</resources>
