@@ -3,6 +3,7 @@ package com.example.lab4;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -15,6 +16,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity2 extends AppCompatActivity {
 
     private EditText editTextNume;
@@ -23,6 +27,7 @@ public class MainActivity2 extends AppCompatActivity {
     private TextView textViewGreutate;
     private Switch switchEsteAdult;
     private Spinner spinnerSpecie;
+    private CalendarView calendarViewAnulNasterii;
     Button saveButton;
 
     @Override
@@ -41,9 +46,14 @@ public class MainActivity2 extends AppCompatActivity {
         seekBarGreutate = findViewById(R.id.seekBar);
         switchEsteAdult = findViewById(R.id.switch1);
         spinnerSpecie = findViewById(R.id.spinner);
-        saveButton = findViewById(R.id.button2);
         textViewGreutate = findViewById(R.id.textView_greutate);
+        calendarViewAnulNasterii = findViewById(R.id.calendarView);
+        saveButton = findViewById(R.id.button2);
+
         textViewGreutate.setText(seekBarGreutate.getProgress() + " tone");
+
+        Date currentTime = Calendar.getInstance().getTime();
+        calendarViewAnulNasterii.setMaxDate(currentTime.getTime());
 
         // Actualizeaza textView-ul de langa seekBar ca sa informeze user-ul cu privire la valoarea aleasa
         seekBarGreutate.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -71,12 +81,13 @@ public class MainActivity2 extends AppCompatActivity {
             // Claude a venit cu acest one-liner frumos
             // pentru maparea pozitiilor itemilor din spinner pe valorile din enum :)
             Balena.Specie specie = Balena.Specie.values()[spinnerSpecie.getSelectedItemPosition()];
+            Date anulNasterii = new Date(calendarViewAnulNasterii.getDate());
 
             Bundle bundle = new Bundle();
             Intent it = new Intent(getApplicationContext(), MainActivity.class);
             // De ce Serializable in loc de Parcelable:
             // https://stackoverflow.com/questions/10975239/use-parcelable-to-pass-an-object-from-one-android-activity-to-another
-            bundle.putSerializable("balena", new Balena(nume, varsta, greutate, esteAdult, specie));
+            bundle.putSerializable("balena", new Balena(nume, varsta, greutate, esteAdult, specie, anulNasterii));
             it.putExtras(bundle);
 
             setResult(RESULT_OK, it);

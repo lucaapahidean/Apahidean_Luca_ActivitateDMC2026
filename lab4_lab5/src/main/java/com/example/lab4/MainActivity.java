@@ -2,8 +2,13 @@ package com.example.lab4;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResult;
@@ -15,12 +20,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     public ActivityResultLauncher<Intent> launcher2;
     public ActivityResultLauncher<Intent> launcher3;
-
     private TextView textViewResult;
+    private List<Balena> balene;
+    ArrayAdapter<Balena> adapter;
+    private ListView listViewResult;
     Button button2;
     Button button3;
 
@@ -35,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        balene = new ArrayList<>();
+        adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                balene
+        );
+
         launcher2 = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -43,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
                         if (result.getResultCode() == RESULT_OK) {
                             Intent data = result.getData();
                             Balena balena = (Balena) data.getSerializableExtra("balena");
-                            textViewResult.setText(balena.toString());
+                            //textViewResult.setText(balena.toString());
+                            balene.add(balena);
+                            adapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -53,16 +72,34 @@ public class MainActivity extends AppCompatActivity {
                 result -> {
                     if (result.getResultCode() == RESULT_OK) {
                         Balena balena = (Balena) result.getData().getSerializableExtra("balena");
-                        textViewResult.setText(balena.toString());
+                        //textViewResult.setText(balena.toString());
+                        balene.add(balena);
+                        adapter.notifyDataSetChanged();
                     }
                 }
         );
 
-        textViewResult = findViewById(R.id.textView7);
+        //textViewResult = findViewById(R.id.textView7);
         button2 = findViewById(R.id.button);
         button2.setOnClickListener(v -> deschideActivitate2());
         button3 = findViewById(R.id.button3);
         button3.setOnClickListener(v -> deschideActivitate3());
+        listViewResult = findViewById(R.id.listView);
+        listViewResult.setAdapter(adapter);
+        listViewResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, balene.get(position).toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        listViewResult.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                balene.remove(position);
+                adapter.notifyDataSetChanged();
+                return true;
+            }
+        });
     }
 
     public void deschideActivitate2() {

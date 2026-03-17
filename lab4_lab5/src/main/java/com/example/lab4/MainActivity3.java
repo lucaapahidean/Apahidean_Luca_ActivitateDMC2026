@@ -15,6 +15,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity3 extends AppCompatActivity {
 
     private EditText editTextNume;
@@ -79,9 +82,11 @@ public class MainActivity3 extends AppCompatActivity {
             boolean esteAdult = switchEsteAdult.isChecked();
             Balena.Specie specie = Balena.Specie.values()[spinnerSpecie.getSelectedItemPosition()];
 
+            Date anulNasterii = Calendar.getInstance().getTime();
+
             Bundle bundle = new Bundle();
             Intent it = new Intent(getApplicationContext(), MainActivity.class);
-            bundle.putSerializable("balena", new Balena(nume, varsta, greutate, esteAdult, specie));
+            bundle.putSerializable("balena", new Balena(nume, varsta, greutate, esteAdult, specie, anulNasterii));
             it.putExtras(bundle);
 
             setResult(RESULT_OK, it);

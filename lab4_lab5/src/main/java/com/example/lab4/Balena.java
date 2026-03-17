@@ -1,6 +1,8 @@
 package com.example.lab4;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 // Luca Apahidean - bALena
 public class Balena implements Serializable {
@@ -19,17 +21,19 @@ public class Balena implements Serializable {
     private int greutate;          // intreg (tone)
     private boolean esteAdult;     // boolean
     private Specie specie;         // enum
+    private Date anulNasterii;     // data nasterii (zi, luna, an)
 
     // Constructor implicit
     public Balena() {}
 
     // Constructor cu parametri
-    public Balena(String nume, int varsta, int greutate, boolean esteAdult, Specie specie) {
+    public Balena(String nume, int varsta, int greutate, boolean esteAdult, Specie specie, Date anulNasterii) {
         this.nume = nume;
         this.varsta = varsta;
         this.greutate = greutate;
         this.esteAdult = esteAdult;
         this.specie = specie;
+        this.anulNasterii = anulNasterii;
     }
 
     // Getteri si setteri
@@ -48,12 +52,18 @@ public class Balena implements Serializable {
     public Specie getSpecie() { return specie; }
     public void setSpecie(Specie specie) { this.specie = specie; }
 
+    public Date getAnulNasterii() { return anulNasterii; }
+
+    public void setAnulNasterii(Date anulNasterii) { this.anulNasterii = anulNasterii; }
+
     @Override
     public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
         return "Balena '" + nume + '\'' + '\n' +
                 "are varsta de " + varsta + " ani," + '\n' +
                 "greutatea " + greutate + " tone." + '\n' +
                 "Este adult? " + esteAdult + '\n' +
-                "Specia sa este " + specie;
+                "Specia sa este " + specie + ',' + '\n' +
+                "iar data nasterii este " + sdf.format(anulNasterii);
     }
 }
