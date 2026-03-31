@@ -1,18 +1,14 @@
 package com.example.lab4;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
 
     public ActivityResultLauncher<Intent> launcher2;
     public ActivityResultLauncher<Intent> launcher3;
-    private TextView textViewResult;
+    public ActivityResultLauncher<Intent> launcherEdit;
     private List<Balena> balene;
-    ArrayAdapter<Balena> adapter;
+    BalenaAdapter adapter;
     private ListView listViewResult;
     Button button2;
     Button button3;
+
+    // Retine pozitia elementului selectat pentru editare
+    private int editIndex = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,52 +45,63 @@ public class MainActivity extends AppCompatActivity {
         });
 
         balene = new ArrayList<>();
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                balene
-        );
+        adapter = new BalenaAdapter(this, balene);
 
+        // Launcher pentru adaugare balena via MainActivity2
         launcher2 = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == RESULT_OK) {
-                            Intent data = result.getData();
-                            Balena balena = (Balena) data.getSerializableExtra("balena");
-                            //textViewResult.setText(balena.toString());
-                            balene.add(balena);
-                            adapter.notifyDataSetChanged();
-                        }
-                    }
-                }
-        );
-        launcher3 = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == RESULT_OK) {
-                        Balena balena = (Balena) result.getData().getSerializableExtra("balena");
-                        //textViewResult.setText(balena.toString());
+                        Balena balena = result.getData().getParcelableExtra("balena");
                         balene.add(balena);
                         adapter.notifyDataSetChanged();
                     }
                 }
         );
 
-        //textViewResult = findViewById(R.id.textView7);
+        // Launcher pentru adaugare balena via MainActivity3
+        launcher3 = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Balena balena = result.getData().getParcelableExtra("balena");
+                        balene.add(balena);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+        );
+
+        // Launcher pentru editarea balenei selectate din lista
+        launcherEdit = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Balena balenaModificata = result.getData().getParcelableExtra("balena");
+                        // Inlocuim obiectul de la pozitia editIndex cu cel modificat
+                        balene.set(editIndex, balenaModificata);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+        );
+
         button2 = findViewById(R.id.button);
         button2.setOnClickListener(v -> deschideActivitate2());
         button3 = findViewById(R.id.button3);
         button3.setOnClickListener(v -> deschideActivitate3());
         listViewResult = findViewById(R.id.listView);
         listViewResult.setAdapter(adapter);
+
+        // La click pe un element, deschidem activitatea de editare cu datele balenei selectate
         listViewResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, balene.get(position).toString(), Toast.LENGTH_SHORT).show();
+                editIndex = position;
+                Intent it = new Intent(getApplicationContext(), MainActivity2.class);
+                it.putExtra("balena", balene.get(position));
+                launcherEdit.launch(it);
             }
         });
+
         listViewResult.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,13 +114,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void deschideActivitate2() {
         Intent it = new Intent(getApplicationContext(), MainActivity2.class);
-
         launcher2.launch(it);
     }
 
     public void deschideActivitate3() {
         Intent it = new Intent(getApplicationContext(), MainActivity3.class);
-
         launcher3.launch(it);
     }
 }

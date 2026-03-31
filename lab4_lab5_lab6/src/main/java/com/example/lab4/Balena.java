@@ -1,11 +1,13 @@
 package com.example.lab4;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // Luca Apahidean - bALena
-public class Balena implements Serializable {
+public class Balena implements Parcelable {
 
     // Enum pentru specia balenei
     public enum Specie {
@@ -36,6 +38,42 @@ public class Balena implements Serializable {
         this.anulNasterii = anulNasterii;
     }
 
+    protected Balena(Parcel in) {
+        nume = in.readString();
+        varsta = in.readInt();
+        greutate = in.readInt();
+        esteAdult = in.readByte() != 0;
+        specie = Specie.values()[in.readInt()];
+        anulNasterii = new Date(in.readLong());
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nume);
+        dest.writeInt(varsta);
+        dest.writeInt(greutate);
+        dest.writeByte((byte) (esteAdult ? 1 : 0));
+        dest.writeInt(specie.ordinal());
+        dest.writeLong(anulNasterii.getTime());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Balena> CREATOR = new Creator<Balena>() {
+        @Override
+        public Balena createFromParcel(Parcel in) {
+            return new Balena(in);
+        }
+
+        @Override
+        public Balena[] newArray(int size) {
+            return new Balena[size];
+        }
+    };
+
     // Getteri si setteri
     public String getNume() { return nume; }
     public void setNume(String nume) { this.nume = nume; }
@@ -53,7 +91,6 @@ public class Balena implements Serializable {
     public void setSpecie(Specie specie) { this.specie = specie; }
 
     public Date getAnulNasterii() { return anulNasterii; }
-
     public void setAnulNasterii(Date anulNasterii) { this.anulNasterii = anulNasterii; }
 
     @Override

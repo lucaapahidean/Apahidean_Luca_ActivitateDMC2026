@@ -67,6 +67,18 @@ public class MainActivity2 extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
+        // Daca activitatea a fost deschisa pentru editare, precompletam campurile
+        Balena balenaDeEditat = getIntent().getParcelableExtra("balena");
+        if (balenaDeEditat != null) {
+            editTextNume.setText(balenaDeEditat.getNume());
+            editTextVarsta.setText(String.valueOf(balenaDeEditat.getVarsta()));
+            seekBarGreutate.setProgress(balenaDeEditat.getGreutate());
+            textViewGreutate.setText(balenaDeEditat.getGreutate() + " tone");
+            switchEsteAdult.setChecked(balenaDeEditat.isEsteAdult());
+            spinnerSpecie.setSelection(balenaDeEditat.getSpecie().ordinal());
+            calendarViewAnulNasterii.setDate(balenaDeEditat.getAnulNasterii().getTime());
+        }
+
         // Trimite raspuns activitatii parinte
         saveButton.setOnClickListener(v -> {
             String nume = editTextNume.getText().toString();
@@ -83,12 +95,8 @@ public class MainActivity2 extends AppCompatActivity {
             Balena.Specie specie = Balena.Specie.values()[spinnerSpecie.getSelectedItemPosition()];
             Date anulNasterii = new Date(calendarViewAnulNasterii.getDate());
 
-            Bundle bundle = new Bundle();
             Intent it = new Intent(getApplicationContext(), MainActivity.class);
-            // De ce Serializable in loc de Parcelable:
-            // https://stackoverflow.com/questions/10975239/use-parcelable-to-pass-an-object-from-one-android-activity-to-another
-            bundle.putSerializable("balena", new Balena(nume, varsta, greutate, esteAdult, specie, anulNasterii));
-            it.putExtras(bundle);
+            it.putExtra("balena", new Balena(nume, varsta, greutate, esteAdult, specie, anulNasterii));
 
             setResult(RESULT_OK, it);
             finish();

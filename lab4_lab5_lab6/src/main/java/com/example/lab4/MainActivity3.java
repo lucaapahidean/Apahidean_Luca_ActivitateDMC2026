@@ -84,10 +84,8 @@ public class MainActivity3 extends AppCompatActivity {
 
             Date anulNasterii = Calendar.getInstance().getTime();
 
-            Bundle bundle = new Bundle();
             Intent it = new Intent(getApplicationContext(), MainActivity.class);
-            bundle.putSerializable("balena", new Balena(nume, varsta, greutate, esteAdult, specie, anulNasterii));
-            it.putExtras(bundle);
+            it.putExtra("balena", new Balena(nume, varsta, greutate, esteAdult, specie, anulNasterii));
 
             setResult(RESULT_OK, it);
             finish();
