@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- ADAUGARE (metoda 1) -->
+    <EditText
+        android:id="@+id/etNume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nume balenă"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etVarsta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Vârstă"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/spinnerSpecie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/specii_balene" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1. Insert"
+        android:onClick="insertMethod" />
+
+    <!-- SELECT TOATE (metoda 2) -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2. Select toate"
+        android:onClick="selectAllMethod" />
+
+    <!-- CAUTA DUPA NUME (metoda 3) -->
+    <EditText
+        android:id="@+id/etCautaNume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Caută după nume exact"
+        android:inputType="text" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3. Select după nume"
+        android:onClick="selectByNumeMethod" />
+
+    <!-- INTERVAL VARSTA (metoda 4) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etMin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Vârstă min"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etMax"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Vârstă max"
+            android:inputType="number"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4. Select interval vârstă"
+        android:onClick="selectByIntervalMethod" />
+
+    <!-- STERGERE (metoda 5) -->
+    <EditText
+        android:id="@+id/etPrag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Șterge unde vârstă > prag"
+        android:inputType="number" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5. Delete după prag"
+        android:onClick="deleteMethod" />
+
+    <!-- INCREMENT (metoda 6) -->
+    <EditText
+        android:id="@+id/etLitera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Incrementează vârstă — literă (ex: B)"
+        android:inputType="text"
+        android:maxLength="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="6. Increment după literă"
+        android:onClick="incrementMethod" />
+
+    <!-- LISTA REZULTATE -->
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

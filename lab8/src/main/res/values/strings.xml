@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">lab8</string>
+
+    <string-array name="specii_balene">
+        <item>BALENA_ALBASTRA</item>
+        <item>BALENA_CU_COCOASA</item>
+        <item>BALENA_UCIGASA</item>
+        <item>BALENA_ALBA</item>
+        <item>BALENA_GRI</item>
+    </string-array>
+</resources>

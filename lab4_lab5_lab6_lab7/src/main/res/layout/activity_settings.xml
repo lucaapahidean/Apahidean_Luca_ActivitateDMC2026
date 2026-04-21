@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Titlu -->
+    <TextView
+        android:id="@+id/tvTitluSetari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Setări afișare text"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Culoare -->
+    <TextView
+        android:id="@+id/tvLabelCuloare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Culoare text:"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitluSetari"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelCuloare"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/radioNegru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Negru"
+            android:checked="true"
+            android:buttonTint="#000000"/>
+
+        <RadioButton
+            android:id="@+id/radioRosu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Roșu"
+            android:layout_marginStart="12dp"
+            android:buttonTint="#E53935"/>
+
+        <RadioButton
+            android:id="@+id/radioAlbastru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Albastru"
+            android:layout_marginStart="12dp"
+            android:buttonTint="#1E88E5"/>
+
+        <RadioButton
+            android:id="@+id/radioVerde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verde"
+            android:layout_marginStart="12dp"
+            android:buttonTint="#43A047"/>
+
+    </RadioGroup>
+
+    <!-- Dimensiune -->
+    <TextView
+        android:id="@+id/tvLabelDimensiune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dimensiune text (8sp – 40sp):"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/radioGroupColor"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <SeekBar
+        android:id="@+id/seekBarSize"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="32"
+        android:progress="8"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelDimensiune"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Previzualizare -->
+    <TextView
+        android:id="@+id/textViewPreview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Previzualizare text"
+        android:gravity="center"
+        android:padding="12dp"
+        android:background="#F5F5F5"
+        app:layout_constraintTop_toBottomOf="@id/seekBarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Buton salvare -->
+    <Button
+        android:id="@+id/buttonSaveSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvează setările"
+        app:layout_constraintTop_toBottomOf="@id/textViewPreview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
