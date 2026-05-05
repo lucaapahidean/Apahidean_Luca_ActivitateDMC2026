@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/lab10" />
             <option value="$PROJECT_DIR$/lab1_lab2" />
             <option value="$PROJECT_DIR$/lab3" />
             <option value="$PROJECT_DIR$/lab4_lab5_lab6_lab7" />

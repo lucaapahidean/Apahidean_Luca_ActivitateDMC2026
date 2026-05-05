@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Lab10</string>
+    <string name="hint_city">Introduceti numele orasului</string>
+    <string name="btn_search">Cauta</string>
+    <string name="msg_searching">Se cauta...</string>
+    <string name="msg_enter_city">Introduceti un oras!</string>
+    <string name="msg_city_not_found">Orasul nu a fost gasit sau eroare de retea.</string>
+    <string name="msg_forecast_error">Eroare la obtinerea prognozei.</string>
+    <string name="format_city_key">City Key: %s</string>
+    <string name="format_day_forecast">%s:  Min=%.1f°C  /  Max=%.1f°C</string>
+    <string name="format_full_result">%1$s\n\nPrognoza:\n%2$s</string>
+</resources>
