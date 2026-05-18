@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introduceti valorile pentru grafic"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <EditText
+        android:id="@+id/etVal1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Valoarea 1"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/etVal2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Valoarea 2"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/etVal3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Valoarea 3"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:id="@+id/etVal4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Valoarea 4"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Selectia tipului de grafic -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alegeti tipul de grafic:"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="28dp">
+
+        <RadioButton
+            android:id="@+id/radioPie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PieChart"
+            android:checked="true"
+            android:layout_marginEnd="16dp" />
+
+        <RadioButton
+            android:id="@+id/radioColumn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ColumnChart"
+            android:layout_marginEnd="16dp" />
+
+        <RadioButton
+            android:id="@+id/radioBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BarChart" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnAfiseaza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Afiseaza grafic"
+        android:textSize="16sp" />
+
+</LinearLayout>
